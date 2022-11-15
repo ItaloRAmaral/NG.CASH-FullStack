@@ -5,10 +5,10 @@ import { Options } from "sequelize";
 const config: Options = {
   dialect: "postgres",
   host: process.env.DB_HOST || "localhost",
-  username: process.env.DB_USER || "root",
+  username: process.env.DB_USER || "postgres",
   password: process.env.DB_PASS || "123456",
   database: "NG",
-  port: 5433,
+  port: 5432,
   dialectOptions: {
     timezone: "Z",
   },
