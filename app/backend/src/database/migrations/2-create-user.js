@@ -13,20 +13,24 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      role: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       password: {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      accountId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        field: 'account_id',
+        references: {
+          model: 'accounts',
+          key: 'id'
+        }
+      },
     });
   },
+
   down: async (queryInterface) => {
     await queryInterface.dropTable('users');
   },

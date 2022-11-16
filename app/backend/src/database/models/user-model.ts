@@ -1,12 +1,12 @@
 import * as Sequelize from 'sequelize';
 import db from '.';
+import Account from './account-model';
 
 class User extends Sequelize.Model {
   id!: number;
   username!: string;
-  email!: string;
   password!: string;
-  role!: string;
+  accountId!: number;
 }
 
 User.init({
@@ -20,17 +20,14 @@ User.init({
     type: Sequelize.STRING,
     allowNull: false,
   },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
   password: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  role: {
-    type: Sequelize.STRING,
+  accountId: {
+    type: Sequelize.INTEGER,
     allowNull: false,
+    field: 'account_id',
   },
 }, {
   sequelize: db,
@@ -38,5 +35,8 @@ User.init({
   underscored: true,
   timestamps: false,
 });
+
+User.belongsTo(Account, { foreignKey: 'accountId', as: 'account' });
+Account.hasOne(User, { foreignKey: 'accountId', as: 'users' });
 
 export default User;
