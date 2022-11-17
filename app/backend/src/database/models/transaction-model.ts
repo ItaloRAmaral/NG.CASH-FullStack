@@ -7,7 +7,7 @@ class Transaction extends Sequelize.Model {
   debitedAccountId!: number;
   creditedAccountId!: number;
   value!: number;
-  createdAt: Date;
+  createdAt!: Date;
 }
 
 Transaction.init(
@@ -48,5 +48,8 @@ Transaction.init(
 
 Transaction.belongsTo(Account, { foreignKey: "debitedAccountId", as: "debitedAccount" });
 Transaction.belongsTo(Account, { foreignKey: "creditedAccountId", as: "creditedAccount" });
+
+Account.hasMany(Transaction, { foreignKey: "debitedAccountId", as: "debitedTransactions" });
+Account.hasMany(Transaction, { foreignKey: "creditedAccountId", as: "creditedTransactions" });
 
 export default Transaction;

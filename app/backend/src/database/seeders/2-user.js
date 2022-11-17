@@ -2,18 +2,21 @@ module.exports = {
   up: async (queryInterface) => {
     await queryInterface.bulkInsert('users', [
       {
-        username: 'Italo Amaral',
-        password: '$2a$08$xi.Hxk1czAO0nZR..B393u10aED0RQ1N3PAEXQ7HxtLjKPEZBu.PW',
-          // senha: secret_admin
+        username: 'italoamaral',
+        password: '5a593af7b639053153d72b0ca3aed6b1',
+          // senha: md5('ItaloTeste12')
         account_id: 1,
       },
       {
-        username: 'Bruna Almeida',
-        password: '$2a$08$Y8Abi8jXvsXyqm.rmp0B.uQBA5qUz7T6Ghlg/CvVr/gLxYj5UAZVO', 
-          // senha: secret_user
+        username: 'fulaninhadetal',
+        password: '3c28d2b0881bf46457a853e0b07531c6',
+          // ('fulana@123')
         account_id: 2,
       },
-    ], {});
+    ], {
+      ignoreDuplicates: true
+    });
+        // await queryInterface.sequelize.query("SELECT setval('id_id_seq', max(id)) FROM users;")
   },
 
   down: async (queryInterface) => {

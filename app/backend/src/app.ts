@@ -1,4 +1,5 @@
 import * as express from "express";
+import userRoutes from "./routes/user-routes";
 
 class App {
   public app: express.Express;
@@ -27,6 +28,7 @@ class App {
     this.app.use(accessControl);
 
     // rotas aqui
+    this.app.use('/user', userRoutes)
   }
 
   public start(PORT: string | number): void {

@@ -1,6 +1,6 @@
 import * as Sequelize from "sequelize";
 import db from ".";
-import Transaction from "./transaction-model";
+// import Transaction from "./transaction-model";
 
 class Account extends Sequelize.Model {
   id!: number;
@@ -28,7 +28,7 @@ Account.init(
   }
 );
 
-Account.hasMany(Transaction, { foreignKey: "debitedAccountId", as: "debitedTransactions" });
-Account.hasMany(Transaction, { foreignKey: "creditedAccountId", as: "creditedTransactions" });
+// Account.hasMany(Transaction, { foreignKey: "debitedAccountId", as: "debitedTransactions" });
+// Account.hasMany(Transaction, { foreignKey: "creditedAccountId", as: "creditedTransactions" });
 
 export default Account;
