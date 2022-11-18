@@ -1,5 +1,6 @@
 import * as express from "express";
 import userRoutes from "./routes/user-routes";
+import transactionRoutes from "./routes/transaction-routes";
 
 class App {
   public app: express.Express;
@@ -29,6 +30,7 @@ class App {
 
     // rotas aqui
     this.app.use('/user', userRoutes)
+    this.app.use('/transaction', transactionRoutes)
   }
 
   public start(PORT: string | number): void {

@@ -11,5 +11,5 @@ export interface IAccount {
 }
 
 export interface IUserAccount extends IUser {
-  account_info: IAccount;
+  account: IAccount;
 }
