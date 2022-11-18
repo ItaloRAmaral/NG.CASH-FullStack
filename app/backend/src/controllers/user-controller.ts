@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { IUser } from "../interfaces/user-interface";
-import { IToken } from "../interfaces/token-interface";
 import UserService from "../services/user-service";
 import createToken from "../helpers/jwt";
 
