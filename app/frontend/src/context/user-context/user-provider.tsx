@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import UserContext from "./index";
 
 interface IProps {
@@ -6,9 +6,27 @@ interface IProps {
 }
 
 export const UserProvider = ({ children }: IProps) => {
-  const teste = 'context'
+  const [isLoading, setIsLoading] = useState(false);
+  const [isMenuLogin, setIsMenuLogin] = useState(false);
+
+  const isLoadingHandler = () => {
+    setIsLoading(!isLoading);
+  };
+
+  const isMenuLoginHandler = () => {
+    setIsMenuLogin(!isMenuLogin);
+  };
+
+  const contextValue = {
+    isLoading,
+    setIsLoading,
+    isLoadingHandler,
+    isMenuLogin,
+    setIsMenuLogin,
+    isMenuLoginHandler,
+  };
   return (
-      <UserContext.Provider value={{ teste }}>
+      <UserContext.Provider value={contextValue}>
         {children}
       </UserContext.Provider>
     );

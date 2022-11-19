@@ -1,38 +1,204 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,500;1,200&display=swap");
+
+* {
+  border-style: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+/* Containers */
+.main-container {
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.secondary-container {
+  background-image: url("https://ng.cash/_nuxt/img/banner-landing-page.0bd7f55.jpg");
+  background-size: cover;
+  height: 100vh;
+  padding: 1rem 1.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Header Styles */
+.header-container {
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar-container {
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 100px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 4rem;
+}
+
+.navbar-menu {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-size: 1em;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.navbar-menu span {
+  text-transform: uppercase;
+}
+
+.login-btn {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 2rem;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 200;
+  padding: 0.5rem;
+  width: 7rem;
+}
+
+.login-btn:hover {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+/* Home Styles */
+
+.main-info-container {
+  display: flex;
+  margin-top: 16vh;
+}
+
+.info-section {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2rem;
+  width: 60%;
+}
+
+.info-section h1 {
+  font-size: 3.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.info-section h2 {
+  font-size: 2.2rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+  align-self: baseline;
+}
+
+.appimg-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.appimg-container img {
+  height: auto;
+  width: 75%;
+}
+
+.apps-container {
+  display: flex;
+  gap: 5%;
+  width: 100%;
+}
+
+.apps-container img {
+  height: auto;
+  width: 35%;
+}
+
+/* Login Modal Styles */
+.login-modal {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+  display: flex;
+  flex-direction: row;
+  height: 21rem;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 30rem;
+  position: absolute;
+  top: 25%;
+  left: 28%;
+}
+
+.error-msg {
+  position: absolute;
+  bottom: 2%;
+  left: 35%;
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+
+.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 44%;
 }
 
-.App-link {
-  color: #61dafb;
+.login-form h1 {
+  margin-bottom: 14%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.line-form {
+  width: 1px;
+  border: 1px solid #000000;
+}
+
+.inpt-label {
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.inpt-label span {
+  margin-bottom: 0.3rem;
+  margin-left: 0.1rem;
+  font-size: 1rem;
+}
+
+.inpt-label input {
+  border: 1px solid #000000;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 200;
+  height: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  width: 100%;
+}
+
+.exit-loginform {
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
 }
