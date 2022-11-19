@@ -1,14 +1,16 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { useUserContext } from './context/user-context/hook';
+import HomePage from './pages/home-page';
+// import { useUserContext } from './context/user-context/hook';
 
 function App() {
-  const { teste } = useUserContext();
+  // const { teste } = useUserContext();
   return (
     <div className="App">
-        <p>
-          {`${teste}`}
-        </p>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </div>
   );
 }
