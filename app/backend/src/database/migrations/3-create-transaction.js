@@ -32,7 +32,7 @@ module.exports = {
         },
       },
       value: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL(9,2),
         allowNull: false,
       },
       createdAt: {

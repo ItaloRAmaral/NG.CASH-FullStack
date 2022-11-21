@@ -11,6 +11,7 @@ export default class TransactionService {
   public transactionModel = TransactionModel;
 
   public deposit = async (depositObj: ITransaction): Promise<ITransaction> => {
+    console.log("SERVICE", depositObj);
     const deposit = await this.transactionModel.create(depositObj);
 
     if (!deposit) {

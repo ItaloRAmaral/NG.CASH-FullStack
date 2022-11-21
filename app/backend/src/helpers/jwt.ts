@@ -1,8 +1,9 @@
 import * as Jwt from "jsonwebtoken";
 import { Secret, SignOptions } from "jsonwebtoken";
+import { IUser } from "../interfaces/user-interface"
 import { IToken, Token } from "../interfaces/token-interface";
 
-const createToken = (username: string): IToken => {
+const createToken = (username: string, password: string): IToken => {
   const secret: Secret = process.env.JWT_SECRET || "secretJWT";
 
   const options: SignOptions = {
@@ -10,7 +11,7 @@ const createToken = (username: string): IToken => {
     algorithm: "HS256",
   };
 
-  const token = Jwt.sign({ username }, secret, options);
+  const token = Jwt.sign({ username, password }, secret, options);
 
   return token as unknown as IToken;
 };3
@@ -26,12 +27,12 @@ export const verifyToken = (token: string): Token => {
   return isTokenValid as Token;
 }
 
-export const getUserByToken = (token: string): string => {
+export const getUserByToken = (token: string): IUser => {
   const isTokenValid = verifyToken(token);
 
-  const { username } = isTokenValid;
+  const userInfo = isTokenValid;
 
-  return username as unknown as string;
+  return userInfo as unknown as IUser;
 }
 
 export default createToken;

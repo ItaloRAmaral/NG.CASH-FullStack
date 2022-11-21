@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { IUser } from "../interfaces/user-interface";
 import UserService from "../services/user-service";
-import createToken from "../helpers/jwt";
+import createToken, { getUserByToken } from "../helpers/jwt";
 
 const md5 = require("md5");
 
@@ -19,9 +19,9 @@ export default class UserController {
       const checkPassword = md5(password);
 
       if (getUser && checkPassword === getUser.password) {
-        const token = createToken(getUser.username);
+        const token = createToken(getUser.username, md5(getUser.password));
 
-        return res.status(StatusCodes.OK).json({ token });
+        return res.status(StatusCodes.OK).json({ token, username: getUser.username });
       }
 
       return res
@@ -43,7 +43,7 @@ export default class UserController {
       });
 
       if (createUser) {
-        const token = createToken(username);
+        const token = createToken(username, md5(password));
 
         return res.status(StatusCodes.OK).json({ ...createUser, token });
       }
@@ -62,8 +62,9 @@ export default class UserController {
     res: Response
   ): Promise<Response> => {
     try {
-      const { username } = req.body as IUser;
+      const { authorization } = req.headers;
 
+      const { username } = getUserByToken(authorization as string);
       const getUserAccount = await this._userService.getUserAccount(username);
 
       if (getUserAccount) {

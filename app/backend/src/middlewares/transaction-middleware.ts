@@ -19,7 +19,6 @@ export default class TransactionMiddleware {
     try {
       const { value } = req.body;
       const { authorization } = req.headers;
-
       const isTokenValid = verifyToken(authorization as string) as Token;
       const cashOutUsername = isTokenValid.username as unknown as string;
 
@@ -30,7 +29,13 @@ export default class TransactionMiddleware {
       if (isCashOutUser.account.balance < value) {
         return res
           .status(StatusCodes.UNAUTHORIZED)
-          .json({ message: "Insufficient funds" });
+          .json({ message: "Dinheiro Insuficiente" });
+      }
+
+      if (value < 0) {
+        return res
+          .status(StatusCodes.UNAUTHORIZED)
+          .json({ message: "Não aceitamos valores negativos" });
       }
 
       next();

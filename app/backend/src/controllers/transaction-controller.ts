@@ -20,6 +20,7 @@ export default class TransactionController {
     try {
       const { authorization } = req.headers;
       const { username, value } = req.body;
+      console.log('CONTROLLER',value)
 
       const cashOutUsername = getUserByToken(authorization as string);
       const cashInUsername = username;
@@ -28,7 +29,7 @@ export default class TransactionController {
         cashInUsername
       );
       const isCashOutUserExist = await this._userService.getUserAccount(
-        cashOutUsername
+        cashOutUsername.username
       );
 
       if (!isCashInUserExist) {

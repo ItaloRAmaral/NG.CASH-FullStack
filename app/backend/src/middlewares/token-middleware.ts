@@ -14,7 +14,6 @@ export default class TokenMiddleware {
   ) => {
     try {
       const { authorization } = req.headers;
-      const { username } = req.body as IUser;
 
       if (!authorization) {
         return res
@@ -22,10 +21,10 @@ export default class TokenMiddleware {
           .json({ message: "Not Found" });
       }
 
-      const userByToken = getUserByToken(authorization as string) as string;
+      const userByToken = getUserByToken(authorization as string);
 
       const isUserExist = await this.model.findOne({
-        where: { username: userByToken },
+        where: { username: userByToken.username },
         raw: true,
       });
 
@@ -33,12 +32,6 @@ export default class TokenMiddleware {
         return res
           .status(StatusCodes.UNAUTHORIZED)
           .json({ message: "Must be a valid token" });
-      }
-
-      if (isUserExist.username !== username) {
-        return res
-          .status(StatusCodes.UNAUTHORIZED)
-          .json({ message: "Wrong Username" });
       }
 
       next();
