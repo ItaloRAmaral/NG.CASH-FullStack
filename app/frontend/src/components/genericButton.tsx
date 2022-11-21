@@ -10,7 +10,7 @@ const defaultProps = {
 }
 
 function GenericButton(props: GenericButtonProps) {
-  const LOW_OPACITY = 0.3;
+  const LOW_OPACITY = 0.7;
   const HIGH_OPACITY = 1;
 
   return (

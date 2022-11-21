@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserContext } from "../context/user-context/hook";
+import { useAppContext } from "../context/app-context/hook";
 import GenericButton from "./genericButton";
 import GenericInput from "./genericInput";
 import { XCircle } from "phosphor-react";
@@ -19,7 +19,7 @@ function LoginModal() {
   const [registerPassword, setRegisterPassword] = useState<string>("");
 
   const navigate = useNavigate();
-  const { isMenuLoginHandler } = useUserContext();
+  const { isMenuLoginHandler } = useAppContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     switch (event.target.name) {
@@ -50,6 +50,7 @@ function LoginModal() {
     } else {
       setIsLoginDisabled(false);
     }
+
     if (!isRegisterPasswordValid || registerUsername.length < 3) {
       setIsRegisterDisabled(true);
     } else {
@@ -65,7 +66,12 @@ function LoginModal() {
         case "Entrar":
           const loginToken = await fetchLogin({ username, password });
           if(!loginToken.token) throw new Error(INVALID_ERROR);
-          setLocalStorage("token", loginToken.token);
+
+          setLocalStorage("user", {
+            username: loginToken.username,
+            token: loginToken.token,
+          });
+
           setIsError(false);
           navigate('/dashboard');
           break;
@@ -75,8 +81,14 @@ function LoginModal() {
               username: registerUsername,
               password: registerPassword,
             });
+
             if(!registerToken.token) throw new Error(INVALID_ERROR);
-            setLocalStorage("token", registerToken.token);
+
+            setLocalStorage("user", {
+              username: registerToken.username,
+              token: registerToken.token,
+            });
+
             setIsError(false);
             navigate("/dashboard");
           break;

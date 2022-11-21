@@ -1,8 +1,8 @@
-import { useUserContext } from "../context/user-context/hook";
+import { useAppContext } from "../context/app-context/hook";
 import GenericButton from "./genericButton";
 
 function Header() {
-  const { isMenuLoginHandler } = useUserContext();
+  const { isMenuLoginHandler } = useAppContext();
   return (
     <header className="header-container">
       <div className="navbar-brand">

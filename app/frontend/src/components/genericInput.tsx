@@ -4,7 +4,7 @@ type GenericInputProps = {
   className: string;
   type: string;
   name: string;
-  value: string;
+  value: string | number;
   placeholder: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };

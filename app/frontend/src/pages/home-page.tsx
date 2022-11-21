@@ -1,11 +1,9 @@
 import Header from "../components/header";
 import LoginModal from "../components/login-modal";
-import { useUserContext } from "../context/user-context/hook";
-import useIsUserLoggedIn from "../hooks/useIsUserLoggedIn";
+import { useAppContext } from "../context/app-context/hook";
 
 function HomePage() {
-  const { isMenuLogin } = useUserContext();
-  useIsUserLoggedIn();
+  const { isMenuLogin } = useAppContext();
   
   return (
     <section className="secondary-container">
