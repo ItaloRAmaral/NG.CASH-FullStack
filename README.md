@@ -45,6 +45,14 @@ npm run compose:down // para parar completamente a aplicação
 
   `- Back End: http://localhost:3001`
 
+<details>
+  <summary> Observação</summary>
+  <p> Caso algum container insita em ficar com o status unhealty, você pode ainda acessar a aplicação localmente, instalando as dependências, tanto no <code>/app/frontend</code> quanto no <code>/app/frontend</code></p>
+
+  <p>E logo após a instalação das dependências, rode os comandos <code>npm start</code> no Front End e o comando <code>npm run dev</code> no back end</p>
+
+</details>
+
 # Back-End
 
 ## 1 - Rotas do Usuário
