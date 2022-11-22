@@ -12,7 +12,7 @@ services:
     tty: true
     stdin_open: true
     # command: bash
-    restart: always
+    # restart: always
     depends_on:
       backend:
         condition: service_healthy
@@ -21,7 +21,6 @@ services:
       interval: 1m30s
       timeout: 10s
       retries: 3
-      start_period: 40s
     networks:
       - virtual_wan_Front-to-Back
 
@@ -42,11 +41,10 @@ services:
       interval: 1m30s
       timeout: 10s
       retries: 3
-      start_period: 40s
     tty: true
     stdin_open: true
     # command: bash
-    restart: always
+    # restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456
@@ -79,7 +77,6 @@ services:
       interval: 1m30s
       timeout: 10s
       retries: 3
-      start_period: 40s  
 
   pgadmin:
     image: dpage/pgadmin4
