@@ -1,11 +1,11 @@
 version: '3.9'
 services:
   frontend:
-    platform: linux/x86_64 #  para quem tem MAC
     container_name: NG_app_frontend
     build: ./frontend
     ports:
       - 3000:3000
+    platform: linux/x86_64 #  para quem tem MAC
     working_dir: /app/frontend
     volumes:
       - ./frontend:/app/frontend
@@ -14,53 +14,72 @@ services:
     # command: bash
     restart: always
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     networks:
       - virtual_wan_Front-to-Back
 
   backend:
-    image: node:16.18
-    platform: linux/x86_64 # para o MAC
     container_name: NG_app_backend
     build: ./backend
+    ports:
+      - 3001:3001
+    platform: linux/x86_64 # para o MAC
     working_dir: /app/backend
     volumes:
       - ./backend:/app/backend
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     tty: true
     stdin_open: true
     # command: bash
     restart: always
-    depends_on:
-      - db
-    ports:
-      - 3001:3001
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456
-      HOSTNAME: db
+      DB_HOST: db
       JWT_SECRET: secretJWT
     networks:
       - virtual_wan_Front-to-Back
       - virtual_lan_Back-to-DB
 
   db:
+    container_name: NG_app_db
     image: postgres:14.1-alpine
     platform: linux/x86_64 # para o MAC
-    container_name: NG_app_db
+    ports:
+      - '5432:5432'
     restart: 'always'
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456
       POSTGRES_DB_NAME: NG-app
-    ports:
-      - '5432:5432'
     volumes: 
       - db:/var/lib/postgresql/data
     networks:
       - virtual_lan_Back-to-DB
       - postgres
     cap_add:
-      - SYS_NICE  
+      - SYS_NICE
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s  
 
   pgadmin:
     image: dpage/pgadmin4
@@ -69,7 +88,7 @@ services:
     ports:
       - "5050:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: italo@italo.com
+      PGADMIN_DEFAULT_EMAIL: leonan@costa.com
       PGADMIN_DEFAULT_PASSWORD: 123456
     volumes:
       - pgadmin-data:/var/lib/pgadmin
