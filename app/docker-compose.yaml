@@ -9,10 +9,10 @@ services:
     working_dir: /app/frontend
     volumes:
       - ./frontend:/app/frontend
-    tty: true
-    stdin_open: true
+    # tty: true
+    # stdin_open: true
     # command: bash
-    # restart: always
+    restart: always
     depends_on:
       backend:
         condition: service_healthy
@@ -20,7 +20,7 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 1m30s
       timeout: 10s
-      retries: 3
+      retries: 5
     networks:
       - virtual_wan_Front-to-Back
 
@@ -40,11 +40,11 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:3001"]
       interval: 1m30s
       timeout: 10s
-      retries: 3
-    tty: true
-    stdin_open: true
+      retries: 5
+    # tty: true
+    # stdin_open: true
     # command: bash
-    # restart: always
+    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456
