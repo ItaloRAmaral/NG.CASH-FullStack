@@ -1,7 +1,6 @@
 version: '3.9'
 services:
   frontend:
-    image: node:16.18
     platform: linux/x86_64 #  para quem tem MAC
     container_name: NG_app_frontend
     build: ./frontend
@@ -12,7 +11,7 @@ services:
       - ./frontend:/app/frontend
     tty: true
     stdin_open: true
-    command: bash
+    # command: bash
     restart: always
     depends_on:
       - backend
@@ -29,7 +28,7 @@ services:
       - ./backend:/app/backend
     tty: true
     stdin_open: true
-    command: bash
+    # command: bash
     restart: always
     depends_on:
       - db
