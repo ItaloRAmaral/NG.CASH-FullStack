@@ -23,6 +23,7 @@ Estruturar uma aplicação web fullstack, dockerizada, cujo objetivo seja possib
   - Sequelize
   - md5
   - Jwt
+  - Postgreesql
 
 ### ⚙️ Como executar
 
