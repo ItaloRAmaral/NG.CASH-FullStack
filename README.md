@@ -1,8 +1,8 @@
-# Desafio-NG.CASH 
+# NG.CASH 
 ###### by _[Italo Amaral](https://www.linkedin.com/in/italo-rockenbach-594082132/)_
 
 
-## 📃 Desafio/Challenge
+## 📃 Sobre/About
 <details>
   <summary > :brazil: Portuguese </summary>
   <p>
