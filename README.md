@@ -2,7 +2,7 @@
 ###### by _[Italo Amaral](https://www.linkedin.com/in/italo-rockenbach-594082132/)_
 
 
-## 📃 Sobre/About
+## 📃 Sobre - About
 <details>
   <summary > :brazil: Portuguese </summary>
   <p>
@@ -19,7 +19,7 @@
   <p><strong>Note:</strong> the application is currently only in Brazilian Portuguese</p>
 </details>
 
-## 🛠️ Ferramentas/Tools
+## 🛠️ Ferramentas - Tools
 
 ## - Front End:
   - React
@@ -39,7 +39,7 @@
   - Jwt
   - Postgreesql
 
-## ⚙️ Como executar/How to run
+## ⚙️ Como executar - How to run
 
 <details>
   <summary>:brazil: Portuguese </summary>
@@ -105,7 +105,7 @@ npm run compose:down // to stop the application completely
 
 # Back-End
 
-## 1 - Rotas do Usuário/User Routes
+## 1 - Rotas do Usuário - User Routes
 
 <details>
   <summary>:brazil: Portuguese </summary>
@@ -263,7 +263,7 @@ In this `GET` request is returned the following information
 ```
 </details>
 
-## 2 - Rotas de Transferencia/Transaction routes
+## 2 - Rotas de Transferencia - Transaction routes
 
 <details>
   <summary>:brazil: Portuguese </summary>
