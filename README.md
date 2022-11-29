@@ -395,6 +395,7 @@ In this `GET` request is returned the following information
 
 <details>
   <summary>:brazil: Portuguese </summary>
+	
 Para ter acesso ao front end da aplicação, basta apenas acessar o endereço `http://localhost:3000/`.
 
 ## 1 - Home Page
