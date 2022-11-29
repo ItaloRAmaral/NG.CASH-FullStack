@@ -39,7 +39,7 @@
   - Jwt
   - Postgreesql
 
-### ⚙️ Como executar/How to run
+## ⚙️ Como executar/How to run
 
 <details>
   <summary>:brazil: Portuguese </summary>
